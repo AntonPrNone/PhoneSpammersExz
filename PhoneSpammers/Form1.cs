@@ -40,5 +40,13 @@ namespace PhoneSpammers
                 }
             }
         }
+
+        private void SaveAndCloseButton_Click(object sender, EventArgs e) // При нажатии на кнопку Save and Close
+        {
+            var rs = new StreamWriter(openFileDialog1.FileName, false);
+            rs.WriteLine(input);
+            
+        }
+
     }
 }
