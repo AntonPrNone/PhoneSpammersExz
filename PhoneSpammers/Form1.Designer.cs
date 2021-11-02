@@ -31,7 +31,7 @@ namespace PhoneSpammers
         {
             this.Heading = new System.Windows.Forms.Label();
             this.OpenFileButton = new System.Windows.Forms.Button();
-            this.SavePeportButton = new System.Windows.Forms.Button();
+            this.SaveReportButton = new System.Windows.Forms.Button();
             this.Text_OutgoingCall = new System.Windows.Forms.Label();
             this.NumberOut = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -74,15 +74,16 @@ namespace PhoneSpammers
             this.OpenFileButton.UseVisualStyleBackColor = true;
             this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click);
             // 
-            // SavePeportButton
+            // SaveReportButton
             // 
-            this.SavePeportButton.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.SavePeportButton.Location = new System.Drawing.Point(687, 38);
-            this.SavePeportButton.Name = "SavePeportButton";
-            this.SavePeportButton.Size = new System.Drawing.Size(91, 26);
-            this.SavePeportButton.TabIndex = 19;
-            this.SavePeportButton.Text = "Save Report";
-            this.SavePeportButton.UseVisualStyleBackColor = true;
+            this.SaveReportButton.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.SaveReportButton.Location = new System.Drawing.Point(687, 38);
+            this.SaveReportButton.Name = "SaveReportButton";
+            this.SaveReportButton.Size = new System.Drawing.Size(91, 26);
+            this.SaveReportButton.TabIndex = 19;
+            this.SaveReportButton.Text = "Save Report";
+            this.SaveReportButton.UseVisualStyleBackColor = true;
+            this.SaveReportButton.Click += new System.EventHandler(this.SaveReportButton_Click);
             // 
             // Text_OutgoingCall
             // 
@@ -258,7 +259,7 @@ namespace PhoneSpammers
             this.Controls.Add(this.label1);
             this.Controls.Add(this.NumberOut);
             this.Controls.Add(this.Text_OutgoingCall);
-            this.Controls.Add(this.SavePeportButton);
+            this.Controls.Add(this.SaveReportButton);
             this.Controls.Add(this.OpenFileButton);
             this.Controls.Add(this.Heading);
             this.Name = "Form1";
@@ -272,7 +273,7 @@ namespace PhoneSpammers
 
         private System.Windows.Forms.Label Heading;
         private System.Windows.Forms.Button OpenFileButton;
-        private System.Windows.Forms.Button SavePeportButton;
+        private System.Windows.Forms.Button SaveReportButton;
         private System.Windows.Forms.Label Text_OutgoingCall;
         private System.Windows.Forms.MaskedTextBox NumberOut;
         private System.Windows.Forms.Label label1;
