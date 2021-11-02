@@ -72,7 +72,7 @@ namespace PhoneSpammers
             this.OpenFileButton.TabIndex = 17;
             this.OpenFileButton.Text = "Open file";
             this.OpenFileButton.UseVisualStyleBackColor = true;
-            this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click_1);
+            this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click);
             // 
             // SavePeportButton
             // 
@@ -171,6 +171,7 @@ namespace PhoneSpammers
             this.PutButton.TabIndex = 30;
             this.PutButton.Text = "Put";
             this.PutButton.UseVisualStyleBackColor = true;
+            this.PutButton.Click += new System.EventHandler(this.PutButton_Click);
             // 
             // label3
             // 
@@ -222,6 +223,7 @@ namespace PhoneSpammers
             this.SaveAndCloseButton.Text = "Save and Close";
             this.SaveAndCloseButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.SaveAndCloseButton.UseVisualStyleBackColor = false;
+            this.SaveAndCloseButton.Click += new System.EventHandler(this.SaveAndCloseButton_Click);
             // 
             // NumberInc
             // 
