@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Security;
 
 namespace PhoneSpammers
 {
@@ -17,34 +19,26 @@ namespace PhoneSpammers
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        public string input;
+        public string StartTime;
+        public string EndTime;
+
+        private void OpenFileButton_Click_1(object sender, EventArgs e) // При нажатии на кнопку Open File
         {
-
-        }
-
-        private void NumberOut_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-        private void OpenFileButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TimeConnection_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    var sr = new StreamReader(openFileDialog1.FileName);
+                    input = sr.ReadToEnd();
+                    sr.Close();
+                }
+                catch (SecurityException ex)
+                {
+                    MessageBox.Show($"Security error.\n\nError message: {ex.Message}\n\n" +
+                    $"Details:\n\n{ex.StackTrace}");
+                }
+            }
         }
     }
 }

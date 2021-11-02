@@ -47,6 +47,7 @@ namespace PhoneSpammers
             this.DateEndPeriod = new System.Windows.Forms.DateTimePicker();
             this.SaveAndCloseButton = new System.Windows.Forms.Button();
             this.NumberInc = new System.Windows.Forms.MaskedTextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // Heading
@@ -71,7 +72,7 @@ namespace PhoneSpammers
             this.OpenFileButton.TabIndex = 17;
             this.OpenFileButton.Text = "Open file";
             this.OpenFileButton.UseVisualStyleBackColor = true;
-            this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click);
+            this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click_1);
             // 
             // SavePeportButton
             // 
@@ -102,7 +103,6 @@ namespace PhoneSpammers
             this.NumberOut.Name = "NumberOut";
             this.NumberOut.Size = new System.Drawing.Size(100, 20);
             this.NumberOut.TabIndex = 21;
-            this.NumberOut.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.NumberOut_MaskInputRejected);
             // 
             // label1
             // 
@@ -114,7 +114,6 @@ namespace PhoneSpammers
             this.label1.Size = new System.Drawing.Size(229, 18);
             this.label1.TabIndex = 22;
             this.label1.Text = "Date/time of connection start";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // DateConnection
             // 
@@ -131,7 +130,6 @@ namespace PhoneSpammers
             this.TimeConnection.Size = new System.Drawing.Size(48, 20);
             this.TimeConnection.TabIndex = 24;
             this.TimeConnection.ValidatingType = typeof(System.DateTime);
-            this.TimeConnection.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.TimeConnection_MaskInputRejected);
             // 
             // Text_IncomingCall
             // 
@@ -204,7 +202,6 @@ namespace PhoneSpammers
             this.label4.Size = new System.Drawing.Size(131, 18);
             this.label4.TabIndex = 33;
             this.label4.Text = "Period end date:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // DateEndPeriod
             // 
@@ -234,6 +231,10 @@ namespace PhoneSpammers
             this.NumberInc.Size = new System.Drawing.Size(100, 20);
             this.NumberInc.TabIndex = 36;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -260,7 +261,6 @@ namespace PhoneSpammers
             this.Controls.Add(this.Heading);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -286,6 +286,7 @@ namespace PhoneSpammers
         private System.Windows.Forms.DateTimePicker DateEndPeriod;
         private System.Windows.Forms.Button SaveAndCloseButton;
         private System.Windows.Forms.MaskedTextBox NumberInc;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 
