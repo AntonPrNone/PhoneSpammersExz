@@ -110,65 +110,7 @@ namespace PhoneSpammers
 
         private void SaveReportButton_Click(object sender, EventArgs e) // При нажатии на кнопку Save Report
         {
-            StartTime = Convert.ToString(DateStartPeriod.Value);
-            EndTime = Convert.ToString(DateEndPeriod.Value);
 
-            var sr = new StreamReader(openFileDialog1.FileName);
-            input = sr.ReadToEnd();
-            //input = input.Substring(0, input.Length - 6);
-
-            sr.Close();
-
-            string input2 = "";
-            string input3 = "";
-            foreach (string i in input.Split('\n'))
-            {
-                string x = i.Split(',')[2].Trim().Substring(0, 10);
-                if (DateTime.Parse(StartTime.Substring(0, 10)) <= DateTime.Parse(x) && DateTime.Parse(EndTime.Substring(0, 10)) >= DateTime.Parse(x))
-                {
-                    input2 += i + '\n';
-                }
-            }
-
-            string numbersUsed = "";
-            for (int j = 0; j < (input2.Length - input2.Replace("\n", "").Length) / "\n".Length; j++)
-            {
-                int kl = 0;
-                int summ = 0;
-                string activeValue = "";
-                int lenghtInput2 = (input2.Length - input2.Replace("\n", "").Length) / "\n".Length;
-                for (int i = 0; i < lenghtInput2; i++)
-                {
-
-                    if (Array.IndexOf(numbersUsed.Split('-'), input2.Split('\n')[i].Split(',')[0].Trim()) == -1)
-                    {
-
-                        if (kl == 0)
-                        {
-                            activeValue = input2.Split('\n')[i].Split(',')[0].Trim();
-                        }
-
-                        if (input2.Split('\n')[i].Split(',')[0].Trim() == activeValue)
-                        {
-                            kl++;
-                            summ += Convert.ToInt32(input2.Split('\n')[i].Split(',')[3].Trim());
-                        }
-
-                    }
-                }
-
-                int h = summ / 3600;
-                int m = (summ - (h * 3600)) / 60;
-                int s = summ % 60;
-                if (input3.Split('\n').Length <= 10)
-                {
-                    input3 += input2.Split('\n')[0].Split(',')[0].Trim() + ", " + kl + ", " + h + ":" + m + ":" + s + "\n";
-                }
-
-                numbersUsed += input2.Split('\n')[0].Split(',')[0].Trim() + "-";
-            }
-
-            System.IO.File.WriteAllText("C:\\Users\\201904\\Documents\\Report.txt", input3);
         }
     }
 }
