@@ -100,10 +100,11 @@ namespace PhoneSpammers
             // NumberOut
             // 
             this.NumberOut.Location = new System.Drawing.Point(31, 169);
-            this.NumberOut.Mask = "+7(999) 000-0000";
+            this.NumberOut.Mask = "+7(999) 000-000";
             this.NumberOut.Name = "NumberOut";
             this.NumberOut.Size = new System.Drawing.Size(100, 20);
             this.NumberOut.TabIndex = 21;
+            this.NumberOut.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.NumberOut_MaskInputRejected);
             // 
             // label1
             // 
@@ -229,7 +230,7 @@ namespace PhoneSpammers
             // NumberInc
             // 
             this.NumberInc.Location = new System.Drawing.Point(668, 169);
-            this.NumberInc.Mask = "+7(999) 000-0000";
+            this.NumberInc.Mask = "+7(999) 000-000";
             this.NumberInc.Name = "NumberInc";
             this.NumberInc.Size = new System.Drawing.Size(100, 20);
             this.NumberInc.TabIndex = 36;
@@ -264,7 +265,6 @@ namespace PhoneSpammers
             this.Controls.Add(this.Heading);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
