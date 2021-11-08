@@ -46,6 +46,9 @@ namespace PhoneSpammers
                     MessageBox.Show($"Security error.\n\nError message: {ex.Message}\n\n" + $"Details:\n\n{ex.StackTrace}");
                 }
             }
+
+            input += '\n';
+            input.TrimStart('\n');
         }
 
         private void PutButton_Click(object sender, EventArgs e) // При нажатии на кнопку Put
@@ -55,6 +58,8 @@ namespace PhoneSpammers
             DateConnectionPer = Convert.ToString(DateConnection.Value.ToShortDateString());
             TimeConnectionPer = Convert.ToString(TimeConnection.Text);
             DurationCallPer = DurationCall.Text;
+
+            // Обработка исключений при неверном формате ввода
 
             if (NumberOutPer.Length != 11)
             {
@@ -104,6 +109,7 @@ namespace PhoneSpammers
 
         private void SaveAndCloseButton_Click(object sender, EventArgs e) // При нажатии на кнопку Save And Close
         {
+            input = input.TrimEnd('\n');
             var rs = new StreamWriter(openFileDialog1.FileName, false);
             rs.WriteLine(input);
             rs.Close();
@@ -117,7 +123,8 @@ namespace PhoneSpammers
             var sr = new StreamReader(openFileDialog1.FileName);
             int lenfile = sr.ReadToEnd().Split('\n').Length;
             sr = new StreamReader(openFileDialog1.FileName);
-            
+
+
             ArrayList ishod = new ArrayList();
             ArrayList vhod = new ArrayList();
             ArrayList time = new ArrayList();
@@ -141,7 +148,7 @@ namespace PhoneSpammers
                 ishodDouble.Add(i);
             }
 
-            for (int i = 0; i < time.Count; i++) 
+            for (int i = 0; i < time.Count; i++) // Фильтр исходящих по временному промежутку
             {
                 if (!(DateTime.Parse(StartTime.Substring(0, 10)) <= (DateTime)time[i] && DateTime.Parse(EndTime.Substring(0, 10)) >= (DateTime)time[i]))
                 {
@@ -154,7 +161,7 @@ namespace PhoneSpammers
                 ishodDouble.Remove("");
             }
 
-            Dictionary<string, int> countOfItems = new Dictionary<string, int>();
+            Dictionary<string, int> countOfItems = new Dictionary<string, int>(); // Количество исходящих вызовов каждого номера в заданный временной промежуток
             foreach (string eachNumber in ishodDouble)
             {
                 if (countOfItems.ContainsKey(eachNumber))
@@ -163,14 +170,14 @@ namespace PhoneSpammers
                     countOfItems[eachNumber] = 1;
             }
 
-            Dictionary<string, int> countOfItems0 = new Dictionary<string, int>();
+            Dictionary<string, int> countOfItems0 = new Dictionary<string, int>(); // Сортировка словаря по количеству исходящих вызовов каждого номера в заданный временной промежуток
 
             foreach (var i in countOfItems.OrderByDescending(u => u.Value))
             {
                 countOfItems0[i.Key] = i.Value;
             }
 
-            ArrayList filteredNumber = new ArrayList();
+            ArrayList filteredNumber = new ArrayList(); // До десяти исходящих номеров, с которых было совершенно наибольшее количество звонков в заданный пользователем период
             foreach (var i in countOfItems0.Keys)
             {
                 if (filteredNumber.Count != 10)
@@ -191,7 +198,7 @@ namespace PhoneSpammers
             int m = 0;
             int s = 0;
 
-            foreach (var i in filteredNumber)
+            foreach (var i in filteredNumber) // Запись в otchet подходящие критерию исходящие номера, их количество и суммарное время звонков
             {
 
                 for (int j = 0; j < ishod.Count; j++)
@@ -213,12 +220,9 @@ namespace PhoneSpammers
                 summ = 0;
             }
 
-            System.IO.File.WriteAllText("D:\\Администратор\\Documents\\Report.txt", otchet);
-        }
+            otchet = otchet.TrimEnd('\n');
 
-        private void NumberOut_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
+            System.IO.File.WriteAllText("C:\\Users\\201904\\Documents\\Report.txt", otchet);
         }
     }
 }
